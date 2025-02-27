@@ -20,7 +20,7 @@ neovim-default-editor
 zsh-autosuggestions
 zsh-syntax-highlighting
 eza
-bat
+bat-extras
 golang
 clangd
 cmake
