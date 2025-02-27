@@ -22,7 +22,15 @@ RUN mapfile -t pkgs < /tmp/install-pkgs &&\
 	dnf clean all
 
 
-FROM extra-packages AS create-user
+FROM extra-packages AS cleanup
+
+RUN dnf install -y symlinks &&\
+	symlinks -r -c -d /usr &&\
+	dnf remove -y symlinks &&\
+	dnf clean all
+
+
+FROM cleanup AS create-user
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Set zsh as the default shell
@@ -46,12 +54,5 @@ FROM create-user AS configure-user
 
 RUN git clone https://github.com/reisaraujo-miguel/my-dot-files.git ./.local/share/dotfiles &&\
 	./.local/share/dotfiles/install.sh
-
-FROM configure-user AS cleanup
-
-RUN dnf install -y symlinks &&\
-	symlinks -r -c -d /usr &&\
-	dnf remove -y symlinks &&\
-	dnf clean all
 
 CMD ["zsh"]
