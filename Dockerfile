@@ -39,8 +39,10 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Create a non-root user (recommended for security)
 RUN chsh -s /usr/bin/zsh &&\
 	useradd -m -u 1000 dev &&\
-	# Grant sudo access without password to dev user
-	echo "dev ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/dev
+	usermod -s /usr/bin/zsh dev
+
+# Grant sudo access without password to dev user
+RUN echo "dev ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/dev
 
 # Set permissions for the sudoers file (optional but recommended)
 RUN chmod 0440 /etc/sudoers.d/dev &&\
