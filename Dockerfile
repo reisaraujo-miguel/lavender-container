@@ -35,11 +35,8 @@ RUN dnf install -y symlinks &&\
 FROM cleanup AS create-user
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-# Set zsh as the default shell
 # Create a non-root user (recommended for security)
-RUN chsh -s /usr/bin/zsh &&\
-	useradd -m -u 1000 dev &&\
-	usermod -s /usr/bin/zsh dev
+RUN useradd -m -u 1000 dev
 
 # Grant sudo access without password to dev user
 RUN echo "dev ALL=(ALL) NOPASSWD:ALL" | tee /etc/sudoers.d/dev
