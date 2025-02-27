@@ -21,6 +21,8 @@ RUN mapfile -t pkgs < /tmp/install-pkgs &&\
 	dnf install -y "${pkgs[@]}" --allowerasing &&\
 	dnf clean all
 
+RUN mandb
+
 
 FROM extra-packages AS cleanup
 

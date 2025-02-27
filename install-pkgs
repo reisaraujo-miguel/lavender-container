@@ -20,6 +20,7 @@ neovim-default-editor
 zsh-autosuggestions
 zsh-syntax-highlighting
 eza
+bat
 bat-extras
 golang
 clangd
@@ -32,3 +33,4 @@ rust
 cargo
 man-pages
 glibc-langpack-en
+groff
