@@ -16,6 +16,7 @@ ghostty-terminfo
 kitty-shell-integration
 kitty-terminfo
 neovim
+ripgrep
 neovim-default-editor
 zsh-autosuggestions
 zsh-syntax-highlighting
