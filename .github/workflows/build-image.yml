@@ -1,9 +1,11 @@
 name: Build and Push to GHCR
 
 on:
+  schedule:
+    - cron: "05 10 * * *" # 10:05am UTC everyday
   push:
     branches:
-      - main # or your main branch name
+      - main
 
 jobs:
   build-and-push:
