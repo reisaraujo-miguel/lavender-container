@@ -35,3 +35,4 @@ cargo
 man-pages
 glibc-langpack-en
 groff
+unzip
