@@ -17,8 +17,10 @@ RUN dnf -y install 'dnf5-command(copr)' && dnf clean all &&\
 
 FROM extra-repos AS extra-packages
 # Install essential coding tools
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN mapfile -t pkgs < /tmp/install-pkgs &&\
 	dnf install -y "${pkgs[@]}" --allowerasing &&\
+	dnf group install -y c-development development-tools &&\
 	dnf clean all
 
 RUN mandb
