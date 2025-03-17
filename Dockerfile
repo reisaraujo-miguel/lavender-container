@@ -57,7 +57,7 @@ WORKDIR /home/dev
 
 FROM create-user AS configure-user
 
-RUN git clone https://github.com/reisaraujo-miguel/my-dot-files.git ./.local/share/dotfiles &&\
+RUN git clone https://github.com/reisaraujo-miguel/dotfiles.git ./.local/share/dotfiles &&\
 	./.local/share/dotfiles/install.sh
 
 CMD ["zsh"]
