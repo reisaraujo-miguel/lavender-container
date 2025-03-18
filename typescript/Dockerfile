@@ -2,13 +2,13 @@ FROM alpine:3.21.3 AS base
 
 COPY ./common-pkgs /tmp/common-pkgs
 
-RUN apk add --no-cache bash
+RUN apk add --no-cache bash bash-completion
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN mapfile -t pkgs < /tmp/common-pkgs &&\
 	apk add --no-cache "${pkgs[@]}"
 
-RUN rm -r /tmp/*
+RUN chsh -s /bin/bash && touch /root/.bashrc
 
 FROM base AS bat-extras
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
