@@ -8,7 +8,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN mapfile -t pkgs < /tmp/common-pkgs &&\
 	apk add --no-cache "${pkgs[@]}"
 
-RUN chsh -s /bin/bash && touch /root/.bashrc
+RUN chsh -s /bin/bash
 
 FROM base AS bat-extras
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -38,4 +38,4 @@ RUN git clone https://github.com/reisaraujo-miguel/dotfiles.git ~/.config/dotfil
 
 RUN rm -r /tmp/*
 
-CMD ["zsh"]
+CMD ["bash"]
