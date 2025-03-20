@@ -36,6 +36,6 @@ FROM tools AS finish
 RUN git clone https://github.com/reisaraujo-miguel/dotfiles.git ~/.config/dotfiles &&\
 	~/.config/dotfiles/install.sh
 
-RUN rm -r /tmp/*
+RUN ln -sf ~/.bashrc /etc/bash/bashrc
 
 CMD ["bash"]
